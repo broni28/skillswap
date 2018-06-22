@@ -6,10 +6,13 @@ git pull origin master
 Committing local repo:
 git add <filename>
 git commit -m "Comment"
-git push
+git push [--set-upstream origin master (if first time)]
 
 Tracking changes:
-git commit (will pull up vim it everything is added correctly)
+git commit (will pull up vim it everything is added correctly, otherwise it will tell you what files aren't being tracked)
 
 Reverting local repo back to latest commit:
 git reset --hard
+
+Remember credentials for 1 hour (https://git-scm.com/docs/git-credential-store)
+git config --global credential.helper "cache --timeout=3600"
