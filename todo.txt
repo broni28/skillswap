@@ -14,7 +14,7 @@ Public Instructor Page: This will be the page a student will go to when clicking
 	Availability (Calendar layout)
 	
 Instructor Account Page (dashboard format)
-	Calendar interface
+	Calendar interface **** I THINK THIS ONE WILL TAKE THE LONGEST OUT OF ALL OF THEM ****
 		Instructor will set their available dates using a calendar interface
 		They will set their hours for each day
 		Users will request a time in accordance with the instructor's availability
