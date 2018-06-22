@@ -1,3 +1,9 @@
+<?php
+	/*
+		This is going to be the URL that a user will visit to join a room with the instructor they have chosen.
+	*/
+?>
+<!DOCTYPE HTML?>
 <html>
 <head>
 	<?php

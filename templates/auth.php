@@ -1,9 +1,15 @@
 <?php
+	/*
+		This page checks if the username and password they entered in the sign in form is in the database.
+		If it isn't, their IP address will be inserted into a database. If they have more than x number
+		of failed attempts, that IP is banned for some duration of time.
+	*/
 	session_start();
 	
 	require_once('/home/ecarlson10/settings.php');
 	
 	if($_POST){
+		
 		//if they dont have too many failed login attempts
 		if(!check_failed_login("webcam")){
 			$stmt = $mysqli->prepare("SELECT * FROM webcam_users WHERE email=? AND password=? LIMIT 1");
@@ -20,6 +26,8 @@
 		}
 	}
 	else{
+		
+		//logout
 		unset($_SESSION['email']);
 	}
 	

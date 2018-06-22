@@ -1,8 +1,6 @@
 <?php
-	
 	/*
-		spam/injection checking:
-		- add recaptcha
+		This page creates their account. It will validate that there username and password are both less than 100 characters, and then enter there credentials into the database
 	*/
 	
 	
