@@ -21,6 +21,6 @@
 	<video id="remote-video" autoplay=""></video>
 	<div>Remote Video</div>
 </div>
-<script src="js/join.js"></script>
+<script src="js/room.js"></script>
 </body>
 </html>
