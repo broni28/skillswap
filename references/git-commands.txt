@@ -1,0 +1,15 @@
+Converting a directory to a git directory:
+git init
+git remote add origin https://github.com/broni28/skillswap.git
+git pull origin master
+
+Committing local repo:
+git add <filename>
+git commit -m "Comment"
+git push
+
+Tracking changes:
+git commit (will pull up vim it everything is added correctly)
+
+Reverting local repo back to latest commit:
+git reset --hard
