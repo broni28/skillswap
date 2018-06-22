@@ -1,0 +1,36 @@
+To do:
+
+YO YO YO YO YO, feel free to add stuff to the to do list as you think of things.
+
+Student Account Page: This will be the page that the student sees when they log into their account. After signing in, there will be a "My Account" button on the top that will take them to this page
+	Show how much money is in account
+	Billing
+	Previously used tutors
+	
+Public Instructor Page: This will be the page a student will go to when clicking on the "Check Availability" of a particular instructor
+	Teaching Subject
+	Rating
+	Instructor Bio
+	Availability (Calendar layout)
+	
+Instructor Account Page (dashboard format)
+	Calendar interface
+		Instructor will set their available dates using a calendar interface
+		They will set their hours for each day
+		Users will request a time in accordance with the instructor's availability
+		Instructor will receive an email and agree/disagree
+		User is charged for missing a class
+	Uploaded profile image
+	Link bank account
+	Allow instructors to set dates they are available and unavailable
+	Show money in account
+	Show when next bank transfer will be
+	Upcoming lessons
+	
+Admin Page
+	Payout confirmation
+	Monitoring system
+	
+Room: This is the URL of 2 people joining a room for video/screen sharing
+	Messages only get broadcast to these two people
+	Room checks if they're authorized to be in the room

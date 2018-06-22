@@ -1,0 +1,15 @@
+<video id='video' autoplay></video>
+<script>
+	navigator.getUserMedia(
+		{
+			video: true,
+			audio: true,
+		},
+		function(stream){
+			document.getElementById("video").srcObject = stream;
+		},
+		function(error){
+			console.log("Video capture error: ", error.code);
+		}
+	);
+</script>
