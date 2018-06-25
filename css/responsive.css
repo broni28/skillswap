@@ -1,0 +1,9 @@
+/*
+	This stylesheet only applies style between a given minimum and maximum screen width.
+*/
+@media only screen and (min-width: 1px) and (max-width: 1600px){
+	#search-bar{
+		/* hides the search bar at the top if client's screen width is between 1px and 1600px */
+		display:none;
+	}
+}
