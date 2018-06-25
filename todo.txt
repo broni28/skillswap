@@ -33,10 +33,22 @@ Admin Page
 	
 Room: This is the URL of 2 people joining a room for video/screen sharing
 	Interface
-		Local video on bottom right
-		Remote video taking up as much of the screen as possible
 		Chat interface
 			"So and so has joined the room"
 			"John (10 minutes ago): Hello there."
-	Messages only get broadcast to these two people
+	Messages only broadcast to these two people
+		Room id is created for every appointment and kept in the database
+		room.php queries to make sure person is authorized to be in room
+		Client side (room.js)
+			What room id should I send this to?
+				Grabs $_GET['room_id'] and $_SESSION['room_key'] as javascript vars, sent in every message
+		Server side (nodeapp.js)
+			What room id should I send this to?
+				Room id and room key are sent in the message from the client
+				Checks one time if room id matches room key
+				If so, stores room id and room key as a javascript var
+				Each time, checks if room id and room key exist in that javascript var
+				If so, send message to the other client
+			Does this person have authorization to broadcast to this room?
+				
 	Room checks if they're authorized to be in the room
