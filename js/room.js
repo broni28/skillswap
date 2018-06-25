@@ -5,7 +5,6 @@ const configuration = {
     urls: 'stun:stun.l.google.com:19302'
   }]
 };
-var num_clients = 0;
 var localVideo = document.getElementById("local-video");
 var remoteVideo = document.getElementById("remote-video");
 var id = Math.floor(Math.random() * 0xFFFFFF).toString(16);
