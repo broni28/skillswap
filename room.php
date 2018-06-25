@@ -12,16 +12,14 @@
 	<link rel='stylesheet' href='css/room.css'>
 </head>
 <body>
-<div>Creating offer: <span id='offer'></span></div>
-<h1 style='text-align:center;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin-top:50px;'>Webcam Test</h1>
-<div style='display:inline-block;'>
-	<video id="local-video" autoplay="" muted></video>
-	<div>Local Video</div>
+<video id="local-video" autoplay="" muted></video>
+<video id="remote-video" autoplay=""></video>
+<div id='chatroom'>
+	<h1>Welcome to the chatroom</h1>
+	<input type='text' placeholder='Send message...'>
+	<input type='submit' value='Send'>
 </div>
-<div style='display:inline-block;'>
-	<video id="remote-video" autoplay=""></video>
-	<div>Remote Video</div>
-</div>
+<div style='position:absolute;top:15px;left:15px;z-index:1;'>Creating offer: <span id='offer'></span></div>
 <script src="js/room.js"></script>
 </body>
 </html>

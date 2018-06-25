@@ -108,13 +108,13 @@ input{
 	background:#eee;
 	z-index:2;
 }
-#overlay-box input{
+#overlay-box input, #chatroom input{
 	width:100%;
 	padding:10px;
-	margin-top:20px;
 	font-size:18px;
+	margin-top:20px;
 }
-#overlay-box input[type=submit]{
+#overlay-box input[type=submit], #chatroom input[type=submit]{
 	background:#753096;
 	color:#fff;
 	cursor:pointer;
@@ -268,4 +268,25 @@ input{
 	padding:15px 0;
 	color:#262c7b;
 	background:#fff;
+}
+
+
+/* ROOM STYLESHEET */
+#local-video{
+	width:250px;
+	position:absolute;
+	bottom:50px;
+	right:50px;
+}
+#remote-video{
+	height:100vh;
+}
+#chatroom{
+	position:absolute;
+	top:0;
+	right:0;
+	/* The 0.75 part is height to width ratio */
+	width:calc(100% - (100vh * 1 / 0.75));
+	min-height:100vh;
+	background:#eee;
 }
