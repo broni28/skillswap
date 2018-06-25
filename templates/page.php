@@ -118,7 +118,7 @@
 <div id='header-wrap'>
 	<div class='center-80'>
 		<div id='logo'><a href='/'><img src='images/logo.png'> Skill Swap</a></div>
-		<a href='join.php'>Join Room</a>
+		<a href='room.php'>Join Room</a>
 		<div id='menu'>
 			<div id='search-bar'>
 				<i class='fa fa-search'></i>

@@ -32,5 +32,11 @@ Admin Page
 	Monitoring system
 	
 Room: This is the URL of 2 people joining a room for video/screen sharing
+	Interface
+		Local video on bottom right
+		Remote video taking up as much of the screen as possible
+		Chat interface
+			"So and so has joined the room"
+			"John (10 minutes ago): Hello there."
 	Messages only get broadcast to these two people
 	Room checks if they're authorized to be in the room

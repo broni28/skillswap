@@ -9,6 +9,7 @@
 	<?php
 		require_once('templates/headers.php')
 	?>
+	<link rel='stylesheet' href='css/room.css'>
 </head>
 <body>
 <div>Creating offer: <span id='offer'></span></div>
