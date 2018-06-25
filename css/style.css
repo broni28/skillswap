@@ -1,5 +1,5 @@
 html, body, div, span, applet, object, iframe,h1, h2, h3, h4, h5, h6, p, blockquote, pre,a, abbr, acronym, address, big, cite, code,del, dfn, em, img, ins, kbd, q, s, samp,small, strike, strong, sub, sup, tt, var,b, u, i, center,dl, dt, dd, ol, ul, li,fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td,article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary,time, mark, audio, video {	margin: 0;	padding: 0;	border: 0;	font-size: 100%;	font: inherit;	vertical-align: baseline;}
-body, input{
+body, input, textarea{
 	font-family: 'Muli', sans-serif;
 	font-family: 'Source Sans Pro', sans-serif;
 	font-family: 'PT Sans', sans-serif;
@@ -30,10 +30,12 @@ img{
 	display:inline-block;
 	vertical-align:top;
 }
-input{
+input, textarea{
 	border:0;
-	box-shadow:inset 0 0 3px #aaa;
 	box-sizing:border-box;
+}
+textarea{
+	resize:none;
 }
 .button{
 	background:#903a1f;
@@ -75,6 +77,9 @@ input{
 	display:flex;
 	flex-wrap:wrap;
 }
+.inset-box{
+	box-shadow:inset 0 0 3px #aaa;
+}
 .flex-center{
 	display:flex;
 	align-items:center;
@@ -108,11 +113,13 @@ input{
 	background:#eee;
 	z-index:2;
 }
-#overlay-box input, #chatroom input{
+#overlay-box input{
+	margin-top:20px;
+}
+#overlay-box input, #chatroom textarea{
 	width:100%;
 	padding:10px;
 	font-size:18px;
-	margin-top:20px;
 }
 #overlay-box input[type=submit], #chatroom input[type=submit]{
 	background:#753096;
@@ -273,20 +280,25 @@ input{
 
 /* ROOM STYLESHEET */
 #local-video{
+	z-index:1;
 	width:250px;
 	position:absolute;
-	bottom:50px;
-	right:50px;
+	bottom:25px;
+	right:calc(25px + 100% - (100vh / 0.75));
 }
 #remote-video{
 	height:100vh;
+	position:absolute;
+	top:0;
+	left:0;
 }
 #chatroom{
 	position:absolute;
 	top:0;
 	right:0;
-	/* The 0.75 part is height to width ratio */
-	width:calc(100% - (100vh * 1 / 0.75));
-	min-height:100vh;
+	/* The 0.75 part is height to width ratio. The last part accounts for the padding */
+	width:calc(100% - (100vh / 0.75) - 30px);
+	padding:15px;
+	min-height:calc(100vh - 30px);
 	background:#eee;
 }
