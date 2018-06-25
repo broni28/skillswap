@@ -302,5 +302,4 @@ textarea{
 	min-height:calc(100vh - 30px);
 	background:linear-gradient(to bottom right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url(/images/section1-wrap.jpg) center center no-repeat;
 	background-size:cover;
-	background-attachment:fixed;
 }
