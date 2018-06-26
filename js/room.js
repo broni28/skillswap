@@ -7,14 +7,15 @@ const configuration = {
 };
 var localVideo = document.getElementById("local-video");
 var remoteVideo = document.getElementById("remote-video");
-var id = Math.floor(Math.random() * 0xFFFFFF).toString(16);
+var sender_id = $("#sender_id").val();
+var acceptor_id = $("#acceptor_id").val();
 var ws = new WebSocket("wss://ecarlson10.webfactional.com:22316");
 function onOfferCreated(desc){
 	pc.setLocalDescription(
 		desc,
 		//if local description is successfully created
 		() => {
-			var message = JSON.stringify({"sdp": pc.localDescription, "id": id});
+			var message = JSON.stringify({"sdp": pc.localDescription});
 			ws.send(message);
 		},
 		onError
@@ -27,11 +28,17 @@ function onError(err){
 // Connection opened
 ws.addEventListener('open', function (event) {
 	
+	//lets the server know who the sender and acceptor are
+	ws.send(JSON.stringify({
+		"sender_id": sender_id,
+		"acceptor_id": acceptor_id,
+	}));
+	
 	pc = new RTCPeerConnection(configuration);
 	
 	pc.onicecandidate = e => {
 		if (e.candidate) {
-			var message = JSON.stringify({'candidate': e.candidate, "id": id});
+			var message = JSON.stringify({'candidate': e.candidate});
 			console.log("Message to server: " + message);
 			ws.send(message);
 		}
@@ -77,23 +84,19 @@ ws.addEventListener('open', function (event) {
 // Listen for messages
 ws.addEventListener('message', function (event) {
 	json_parse = JSON.parse(event.data);
-	var message_id = json_parse.id;
 	
-	if(message_id != id){
-		
-		if(json_parse.sdp){			
-			pc.setRemoteDescription(new RTCSessionDescription(json_parse.sdp), () => {
-				if (pc.remoteDescription.type === 'offer') {
-				  pc.createAnswer().then(onOfferCreated).catch(onError);
-				}
-			}, onError);
-		}
-		else if(json_parse.candidate){
-			// Add the new ICE candidate to our connections remote description
-			console.log("Adding ICE candidate:", json_parse.candidate);
-			pc.addIceCandidate(
-				new RTCIceCandidate(json_parse.candidate), function(){}, onError
-			);
-		}
+	if(json_parse.sdp){
+		pc.setRemoteDescription(new RTCSessionDescription(json_parse.sdp), () => {
+			if (pc.remoteDescription.type === 'offer') {
+			  pc.createAnswer().then(onOfferCreated).catch(onError);
+			}
+		}, onError);
+	}
+	else if(json_parse.candidate){
+		// Add the new ICE candidate to our connections remote description
+		console.log("Adding ICE candidate:", json_parse.candidate);
+		pc.addIceCandidate(
+			new RTCIceCandidate(json_parse.candidate), function(){}, onError
+		);
 	}
 });
