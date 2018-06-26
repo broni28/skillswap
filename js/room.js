@@ -1,5 +1,3 @@
-var creating_offer = true;
-$("#offer").text(creating_offer);
 const configuration = {
   iceServers: [{
     urls: 'stun:stun.l.google.com:19302'
@@ -9,6 +7,7 @@ var localVideo = document.getElementById("local-video");
 var remoteVideo = document.getElementById("remote-video");
 var sender_id = $("#sender_id").val();
 var acceptor_id = $("#acceptor_id").val();
+var room_id = $("#room_id").val();
 var ws = new WebSocket("wss://ecarlson10.webfactional.com:22316");
 function onOfferCreated(desc){
 	pc.setLocalDescription(
@@ -32,58 +31,14 @@ ws.addEventListener('open', function (event) {
 	ws.send(JSON.stringify({
 		"sender_id": sender_id,
 		"acceptor_id": acceptor_id,
+		"room_id": room_id,
 	}));
-	
-	pc = new RTCPeerConnection(configuration);
-	
-	pc.onicecandidate = e => {
-		if (e.candidate) {
-			var message = JSON.stringify({'candidate': e.candidate});
-			console.log("Message to server: " + message);
-			ws.send(message);
-		}
-	}
-	
-	pc.onnegotiationneeded = () => {
-		
-		//false then true
-		if(creating_offer){
-			console.log("Creating offer");
-			pc.createOffer(onOfferCreated, onError);
-		}
-	}
-	
-	// When a remote stream arrives display it in the #remoteVideo element
-	pc.ontrack = event => {
-		console.log("Remote stream has arrived:", event);
-		const stream = event.streams[0];
-		if (!remoteVideo.srcObject || remoteVideo.srcObject.id !== stream.id) {
-			console.log("ADDING: ", stream);
-			remoteVideo.srcObject = stream;
-		}
-	};
-	
-	navigator.mediaDevices.getUserMedia({
-		/* video: {
-			mediaSource: "screen", // whole screen sharing
-			width: {max: '1920'},
-			height: {max: '1080'}
-		}, */
-		video: true,
-		audio: true
-	}).then(stream => {
-		// Display your local video in #localVideo element
-		localVideo.srcObject = stream;
-		// Add your stream to be sent to the conneting peer
-		stream.getTracks().forEach(track => pc.addTrack(track, stream));
-	}, onError);
-	
 	
 });
 
 // Listen for messages
 ws.addEventListener('message', function (event) {
-	json_parse = JSON.parse(event.data);
+	var json_parse = JSON.parse(event.data);
 	
 	if(json_parse.sdp){
 		pc.setRemoteDescription(new RTCSessionDescription(json_parse.sdp), () => {
@@ -98,5 +53,53 @@ ws.addEventListener('message', function (event) {
 		pc.addIceCandidate(
 			new RTCIceCandidate(json_parse.candidate), function(){}, onError
 		);
+	}
+	else if(json_parse.num_clients){
+		var num_clients = json_parse.num_clients;
+		$("#num-clients").text(num_clients);
+		
+		pc = new RTCPeerConnection(configuration);
+		
+		pc.onicecandidate = e => {
+			if (e.candidate) {
+				var message = JSON.stringify({'candidate': e.candidate});
+				console.log("Message to server: " + message);
+				ws.send(message);
+			}
+		}
+		
+		pc.onnegotiationneeded = () => {
+			
+			//false then true
+			if(num_clients == 2){
+				console.log("Creating offer");
+				pc.createOffer(onOfferCreated, onError);
+			}
+		}
+		
+		// When a remote stream arrives display it in the #remoteVideo element
+		pc.ontrack = event => {
+			console.log("Remote stream has arrived:", event);
+			const stream = event.streams[0];
+			if (!remoteVideo.srcObject || remoteVideo.srcObject.id !== stream.id) {
+				console.log("ADDING: ", stream);
+				remoteVideo.srcObject = stream;
+			}
+		};
+		
+		navigator.mediaDevices.getUserMedia({
+			/* video: {
+				mediaSource: "screen", // whole screen sharing
+				width: {max: '1920'},
+				height: {max: '1080'}
+			}, */
+			video: true,
+			audio: true
+		}).then(stream => {
+			// Display your local video in #localVideo element
+			localVideo.srcObject = stream;
+			// Add your stream to be sent to the conneting peer
+			stream.getTracks().forEach(track => pc.addTrack(track, stream));
+		}, onError);
 	}
 });

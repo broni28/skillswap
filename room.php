@@ -31,12 +31,14 @@
 					return array(
 						'sender_id' => $row['instructor_id'],
 						'acceptor_id' => $row['student_id'],
+						'room_id' => $row['id'],
 					);
 				}
 				elseif($this->role == 'student'){
 					return array(
 						'sender_id' => $row['student_id'],
 						'acceptor_id' => $row['instructor_id'],
+						'room_id' => $row['id'],
 					);
 				}
 			}
@@ -83,6 +85,7 @@
 <body>
 <input type='hidden' id='sender_id' value='<?php echo $ids['sender_id']; ?>'>
 <input type='hidden' id='acceptor_id' value='<?php echo $ids['acceptor_id']; ?>'>
+<input type='hidden' id='room_id' value='<?php echo $ids['room_id']; ?>'>
 <div id='logo' style='position:absolute;z-index:1;top:15px;'><a href='/'><img src='images/logo.png'> Skill Swap</a></div>
 <video id="local-video" autoplay muted></video>
 <video id="remote-video" autoplay></video>
@@ -106,7 +109,7 @@
 	</div>
 	<textarea style='margin-top:15px;' placeholder='Send message...'></textarea>
 </div>
-<div style='position:absolute;top:50px;left:15px;z-index:1;'>Creating offer: <span id='offer'></span></div>
+<div style='position:absolute;top:50px;left:15px;z-index:1;'>Num Clients: <span id='num-clients'></span></div>
 <script src="js/room.js"></script>
 </body>
 </html>
