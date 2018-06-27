@@ -16,5 +16,9 @@ git diff master origin/master
 Reverting local repo back to latest commit:
 git reset --hard
 
+Checking out an old commit:
+git checkout <hash>
+git checkout master
+
 Remember credentials for 1 hour (https://git-scm.com/docs/git-credential-store)
 git config --global credential.helper "cache --timeout=3600"
