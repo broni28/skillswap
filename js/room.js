@@ -158,3 +158,13 @@ ws.addEventListener('message', function (event) {
 		");
 	}
 });
+
+setInterval(() => {
+	if($("#waiting-message").hasClass("effect2")){
+		$("#waiting-message").addClass("transition-effect2");
+		$("#waiting-message").removeClass("effect2");
+	}
+	else{
+		$("#waiting-message").addClass("effect2");
+	}
+}, 3000);

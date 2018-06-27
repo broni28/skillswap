@@ -187,6 +187,9 @@ textarea{
 .effect1{
 	padding:0 !important;
 }
+.effect-video{
+	transform: rotate3d(0,1,1,180deg);
+}
 .transition-all{
 	transition:2s ease padding;
 }
@@ -318,9 +321,6 @@ textarea{
 	bottom:25px;
 	right:calc(25px + 100% - (100vh / 0.7));
 }
-.effect-video{
-	transform: rotate3d(0,1,1,180deg);
-}
 #remote-video{
 	transition:1s ease transform;
 	height:100vh;
@@ -337,7 +337,7 @@ textarea{
 	justify-content:center;
 	width:calc(100vh / 0.7);
 	height:100vh;
-	background:#46489a;
+	background:#262626;
 	color:#fff;
 	font-size:40px;
 }
