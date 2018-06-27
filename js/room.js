@@ -80,7 +80,7 @@ function accept_chat_message(message){
 }
 
 // Connection opened
-ws.addEventListener('open', function (event) {
+ws.onopen = event => {
 	
 	send_chat_message("You have joined the room.");
 	
@@ -90,11 +90,10 @@ ws.addEventListener('open', function (event) {
 		"acceptor_id": acceptor_id,
 		"room_id": room_id,
 	}));
-	
-});
+}
 
 // Listen for messages
-ws.addEventListener('message', function (event) {
+ws.onmessage = event => {
 	var json_parse = JSON.parse(event.data);
 	
 	if(json_parse.sdp){
@@ -113,10 +112,6 @@ ws.addEventListener('message', function (event) {
 	}
 	else if(json_parse.num_clients){
 		var num_clients = json_parse.num_clients;
-		
-		if(num_clients == 2){			
-			accept_chat_message("Person 2 has joined the room.");
-		}
 		
 		pc = new RTCPeerConnection(configuration);
 		
@@ -139,6 +134,10 @@ ws.addEventListener('message', function (event) {
 		
 		// When a remote stream arrives display it in the #remoteVideo element
 		pc.ontrack = event => {
+			if(num_clients == 2){			
+				accept_chat_message("Person 2 has joined the room.");
+			}
+			
 			console.log("Remote stream has arrived:", event);
 			const stream = event.streams[0];
 			if (!remoteVideo.srcObject || remoteVideo.srcObject.id !== stream.id) {
@@ -170,14 +169,4 @@ ws.addEventListener('message', function (event) {
 	else if(json_parse.chat_message){
 		accept_chat_message(json_parse.chat_message);
 	}
-});
-
-setInterval(() => {
-	if($("#waiting-message").hasClass("effect2")){
-		$("#waiting-message").addClass("transition-effect2");
-		$("#waiting-message").removeClass("effect2");
-	}
-	else{
-		$("#waiting-message").addClass("effect2");
-	}
-}, 3000);
+}
