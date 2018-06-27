@@ -22,14 +22,14 @@ function overlay(ele_id){
 }
 
 $(window).scroll(() => {
-	parallax('section1-wrap', 700);
-	parallax('section4-wrap', 700);
+	parallax('section1-wrap', 800);
+	parallax('section4-wrap', 1601);
 	
 	scroll_effect("effect1");
 });
 $(document).ready(() => {
-	parallax('section1-wrap', 700);
-	parallax('section4-wrap', 700);
+	parallax('section1-wrap', 800);
+	parallax('section4-wrap', 1601);
 	
 	scroll_effect("effect1");
 });

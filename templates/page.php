@@ -52,6 +52,8 @@
 <div id='header-wrap'>
 	<div class='center-80'>
 		<div id='logo'><a href='/'><img src='images/logo.png'> Skill Swap</a></div>
+		<div id='mobile-menu'></div>
+		<div id='mobile-button' onclick='menu()'><i id='bars' class="fa fa-bars" aria-hidden="true"></i><i id='times' class="fa fa-times" aria-hidden="true"></i></i></div>
 		<div id='menu'>
 			<div id='search-bar'>
 				<i class='fa fa-search'></i>

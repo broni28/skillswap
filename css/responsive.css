@@ -1,9 +1,62 @@
+#mobile-button{
+	float:right;
+	font-size:25px;
+	display:none;
+}
+#mobile-menu{
+	display:none;
+	overflow:auto;
+}
+#bars, #times{
+	line-height:61px;
+	padding:0 10px;
+	position:absolute;
+	top:0;
+	right:5%;
+	color:#fff;
+}
+#times{
+	display:none;
+}
+#header-wrap #mobile-menu a{
+    display:inline-block;
+    clear:both;
+    float:left;
+}
+#header-wrap #mobile-menu .mobile-clear-none{
+	clear:none;
+}
 /*
-	This stylesheet only applies style between a given minimum and maximum screen width.
+	The "media only" option applies style between a given minimum and maximum screen width.
 */
 @media only screen and (min-width: 1px) and (max-width: 1600px){
 	#search-bar{
 		/* hides the search bar at the top if client's screen width is between 1px and 1600px */
 		display:none;
+	}
+	.center-40, .center-80{
+		width:90%;
+	}
+	.instructor-box{
+		width:calc(33% - 20px);
+	}
+}
+@media only screen and (min-width: 1px) and (max-width: 1200px){
+	#mobile-button{
+		display:block;
+	}
+	#menu{
+		display:none;
+	}
+}
+@media only screen and (min-width: 1px) and (max-width: 600px){
+	.wide-33{
+		width:100% !important;
+	}
+	#section2-wrap .wide-33{
+		margin:30px 0;
+	}
+	.instructor-box{
+		width:calc(100% - 20px);
 	}
 }
