@@ -34,7 +34,7 @@
 		/* hides the search bar at the top if client's screen width is between 1px and 1600px */
 		display:none;
 	}
-	.center-40, .center-80{
+	.center-80{
 		width:90%;
 	}
 	.instructor-box{
@@ -42,6 +42,9 @@
 	}
 }
 @media only screen and (min-width: 1px) and (max-width: 1200px){
+	.center-40{
+		width:90%;
+	}
 	#mobile-button{
 		display:block;
 	}
