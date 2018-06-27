@@ -9,7 +9,18 @@ var sender_id = $("#sender_id").val();
 var acceptor_id = $("#acceptor_id").val();
 var room_id = $("#room_id").val();
 var ws = new WebSocket("wss://ecarlson10.webfactional.com:22316");
-function onOfferCreated(desc){
+function escape_html(text) {
+  var map = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;'
+  };
+
+  return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+}
+function on_offer_created(desc){
 	pc.setLocalDescription(
 		desc,
 		//if local description is successfully created
@@ -17,15 +28,44 @@ function onOfferCreated(desc){
 			var message = JSON.stringify({"sdp": pc.localDescription});
 			ws.send(message);
 		},
-		onError
+		on_error
 	);
 }
-function onError(err){
+function on_error(err){
 	console.log("Error: " + err);
+}
+function get_key(e){
+	if(e.keyCode == 13){
+		var message = $("#chat-textarea").val();
+		if(message.trim()){			
+			send_chat_message(message);
+			return false;
+		}
+		else{
+			return false;
+		}
+	}
+}
+function send_chat_message(message){
+	ws.send(JSON.stringify({
+		chat_message: message,
+	}));
+	$("#chat-textarea").val("");
+	$("#chatroom-box").append("\
+	<div style='width:92%;margin-left:auto;margin-bottom:15px;'>\
+		<div style='text-align:right;'>\
+			<div style='display:inline-block;color:#ccc;'>3:36 PM</div>\
+			<div style='display:inline-block;'>Evan Carlson</div>\
+		</div>\
+		<div style='padding:8px;border-radius:4px;background:#deebf7;'>" + escape_html(message) + "</div>\
+	</div>\
+	");
 }
 
 // Connection opened
 ws.addEventListener('open', function (event) {
+	
+	send_chat_message("You have joined the room.");
 	
 	//lets the server know who the sender and acceptor are
 	ws.send(JSON.stringify({
@@ -43,15 +83,15 @@ ws.addEventListener('message', function (event) {
 	if(json_parse.sdp){
 		pc.setRemoteDescription(new RTCSessionDescription(json_parse.sdp), () => {
 			if (pc.remoteDescription.type === 'offer') {
-			  pc.createAnswer().then(onOfferCreated).catch(onError);
+			  pc.createAnswer().then(on_offer_created).catch(on_error);
 			}
-		}, onError);
+		}, on_error);
 	}
 	else if(json_parse.candidate){
 		// Add the new ICE candidate to our connections remote description
 		console.log("Adding ICE candidate:", json_parse.candidate);
 		pc.addIceCandidate(
-			new RTCIceCandidate(json_parse.candidate), function(){}, onError
+			new RTCIceCandidate(json_parse.candidate), function(){}, on_error
 		);
 	}
 	else if(json_parse.num_clients){
@@ -73,7 +113,7 @@ ws.addEventListener('message', function (event) {
 			//false then true
 			if(num_clients == 2){
 				console.log("Creating offer");
-				pc.createOffer(onOfferCreated, onError);
+				pc.createOffer(on_offer_created, on_error);
 			}
 		}
 		
@@ -100,6 +140,17 @@ ws.addEventListener('message', function (event) {
 			localVideo.srcObject = stream;
 			// Add your stream to be sent to the conneting peer
 			stream.getTracks().forEach(track => pc.addTrack(track, stream));
-		}, onError);
+		}, on_error);
+	}
+	else if(json_parse.chat_message){
+		$("#chatroom-box").append("\
+		<div style='width:92%;margin-right:auto;margin-bottom:15px;'>\
+			<div style='text-align:right;'>\
+				<div style='display:inline-block;color:#ccc;'>3:36 PM</div>\
+				<div style='display:inline-block;'>Brandon Lalonde</div>\
+			</div>\
+			<div style='padding:8px;border-radius:4px;background:#f5dede;'>" + escape_html(json_parse.chat_message) + "</div>\
+		</div>\
+		");
 	}
 });
