@@ -72,7 +72,9 @@
 	</div>
 </div>
 <?php
+	echo "<div class='body-" . $page['body'] . "'>";
 	require_once('templates/body/body-' . $page['body'] . '.php');
+	echo "</div>";
 ?>
 <div id='footer1-wrap'>
 	<div class='center-80'>

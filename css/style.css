@@ -88,6 +88,9 @@ textarea{
 .text-center{
 	text-align:center;
 }
+.text-right{
+	text-align:right;
+}
 .text-shadow{
 	text-shadow:2px 2px 2px #333;
 }
@@ -267,7 +270,39 @@ textarea{
 }
 /*----SECTION 5----*/
 #section5-wrap{
+	background:url(/images/section1-wrap.jpg) center center no-repeat;
+	background-size:cover;
+	padding:25vh 0;
+	color:#fff;
+}
+#section5-wrap h1{
+	padding:20px 0;
+	background:rgba(0,0,0,0.8);
+}
+/*----SECTION 6----*/
+#section6-wrap{
 	background:#efefef;
+	padding:10px 0;
+	border-top:1px solid #ccc;
+	color:#444;
+}
+#section6-wrap h1{
+	margin-bottom:25px;
+}
+#section6-wrap h2{
+	color:#969696;
+	text-transform:uppercase;
+	border-top:1px solid #ccc;
+}
+#section6-wrap a{
+	color:#4b89dc;
+}
+#section6-wrap input{
+	padding:10px 5px;
+}
+#section6-wrap input[type=submit]{
+	color:#fff;
+	background:#4b89dc;
 }
 /*----FOOTER----*/
 #footer1-wrap, #footer2-wrap{
