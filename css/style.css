@@ -379,10 +379,40 @@ textarea{
 .chat-bubble-left, .chat-bubble-right{
 	padding:8px;
 	border-radius:25px;
+	position:relative;
+	float:left;
+	
+	/* width, padding, margin */
+	width:calc(100% - 50px - 16px - 15px);
+}
+.chat-bubble-left:after, .chat-bubble-right:after{
+	content:'';
+    position:absolute;
+    top:14px;
+    left:-8px;
+    width:0;
+    height:0;
+    border:11px solid transparent;
+    border-top:0;
+    border-right:0;
+}
+.chat-bubble-left:after{
+	border-bottom-color:#a9d2f9;
+}
+.chat-bubble-right:after{
+    border-bottom-color:#198cf7;
 }
 .chat-bubble-left{
-	background:#f5dede;
+	background:#a9d2f9;
 }
 .chat-bubble-right{
-	background:#deebf7;
+	background:#198cf7;
+	color:#fff;
+}
+.chat-profile{
+	width:50px;
+	height:50px;
+	border-radius:50%;
+	float:left;
+	margin-right:15px;
 }

@@ -57,7 +57,24 @@ function send_chat_message(message){
 			<div class='chat-timestamp'>3:36 PM</div>\
 			<div class='chat-username'>Evan Carlson</div>\
 		</div>\
-		<div class='chat-bubble-right'>" + escape_html(message) + "</div>\
+		<div class='overflow'>\
+			<img src='images/instructor.jpg' class='chat-profile'>\
+			<div class='chat-bubble-right'>" + escape_html(message) + "</div>\
+		</div>\
+	</div>\
+	");
+}
+function accept_chat_message(message){
+	$("#chatroom-box").append("\
+	<div class='chat-box-container' style='margin-right:auto;'>\
+		<div class='text-right'>\
+			<div class='chat-timestamp'>3:36 PM</div>\
+			<div class='chat-username'>Brandon Lalonde</div>\
+		</div>\
+		<div class='overflow'>\
+			<img src='images/instructor.jpg' class='chat-profile'>\
+			<div class='chat-bubble-left'>" + escape_html(message) + "</div>\
+		</div>\
 	</div>\
 	");
 }
@@ -96,6 +113,10 @@ ws.addEventListener('message', function (event) {
 	}
 	else if(json_parse.num_clients){
 		var num_clients = json_parse.num_clients;
+		
+		if(num_clients == 2){			
+			accept_chat_message("Person 2 has joined the room.");
+		}
 		
 		pc = new RTCPeerConnection(configuration);
 		
@@ -147,15 +168,7 @@ ws.addEventListener('message', function (event) {
 		}, on_error);
 	}
 	else if(json_parse.chat_message){
-		$("#chatroom-box").append("\
-		<div class='chat-box-container' style='margin-right:auto;'>\
-			<div class='text-right'>\
-				<div class='chat-timestamp'>3:36 PM</div>\
-				<div class='chat-username'>Brandon Lalonde</div>\
-			</div>\
-			<div class='chat-bubble-left'>" + escape_html(json_parse.chat_message) + "</div>\
-		</div>\
-		");
+		accept_chat_message(json_parse.chat_message);
 	}
 });
 
