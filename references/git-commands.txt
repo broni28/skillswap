@@ -9,7 +9,9 @@ git commit -m "Comment"
 git push [--set-upstream origin master (if first time)]
 
 Tracking changes:
-git commit (will pull up vim it everything is added correctly, otherwise it will tell you what files aren't being tracked)
+git commit (will pull up vim it everything is added correctly, otherwise it will tell you what files aren't being tracked. this only works for the changes that you've made)
+git fetch
+git diff master origin/master
 
 Reverting local repo back to latest commit:
 git reset --hard
