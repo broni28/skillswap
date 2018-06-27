@@ -8,6 +8,7 @@ var remoteVideo = document.getElementById("remote-video");
 var sender_id = $("#sender_id").val();
 var acceptor_id = $("#acceptor_id").val();
 var room_id = $("#room_id").val();
+var both_joined = false;
 var ws = new WebSocket("wss://ecarlson10.webfactional.com:22316");
 function escape_html(text) {
   var map = {
@@ -109,6 +110,10 @@ ws.onmessage = event => {
 		pc.addIceCandidate(
 			new RTCIceCandidate(json_parse.candidate), function(){}, on_error
 		);
+		if(!both_joined){			
+			accept_chat_message("Other person has joined the room.");
+			both_joined = true;
+		}
 	}
 	else if(json_parse.num_clients){
 		var num_clients = json_parse.num_clients;
@@ -134,9 +139,6 @@ ws.onmessage = event => {
 		
 		// When a remote stream arrives display it in the #remoteVideo element
 		pc.ontrack = event => {
-			if(num_clients == 2){			
-				accept_chat_message("Person 2 has joined the room.");
-			}
 			
 			console.log("Remote stream has arrived:", event);
 			const stream = event.streams[0];
