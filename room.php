@@ -82,22 +82,22 @@
 		require_once('templates/headers.php')
 	?>
 </head>
-<body>
+<body id='body-room'>
 <input type='hidden' id='sender_id' value='<?php echo $ids['sender_id']; ?>'>
 <input type='hidden' id='acceptor_id' value='<?php echo $ids['acceptor_id']; ?>'>
 <input type='hidden' id='room_id' value='<?php echo $ids['room_id']; ?>'>
 <div id='logo' style='position:absolute;z-index:1;top:15px;'><a href='/' style='color:#fff;'><img src='images/logo.png'> Skill Swap</a></div>
 <div id='remote-video-standin'>
-	<!--<div class='text-center'>
+	<div class='text-center'>
 		<div>Waiting for other user...</div>
 		<img src='images/loading.gif'>
-	</div>-->
+	</div>
 </div>
 <video id="local-video" autoplay muted></video>
 <video id="remote-video" class='effect-video' autoplay></video>
 <div id='chatroom'>
 	<div id='chatroom-box' class='inset-box'></div>
-	<textarea id='chat-textarea' style='margin-top:15px;' placeholder='Send message...' onkeypress='return get_key(event)'></textarea>
+	<textarea id='chat-textarea' style='margin-top:15px;' placeholder='Send message' onkeypress='return get_key(event)'></textarea>
 </div>
 <script src="js/room.js"></script>
 </body>

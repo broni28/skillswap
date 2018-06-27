@@ -125,7 +125,7 @@ ws.onmessage = event => {
 		
 		pc.onnegotiationneeded = () => {
 			
-			//false then true
+			//The second person to join the room creates the offer
 			if(num_clients == 2){
 				console.log("Creating offer");
 				pc.createOffer(on_offer_created, on_error);
