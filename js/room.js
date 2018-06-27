@@ -52,12 +52,12 @@ function send_chat_message(message){
 	}));
 	$("#chat-textarea").val("");
 	$("#chatroom-box").append("\
-	<div style='width:92%;margin-left:auto;margin-bottom:15px;'>\
-		<div style='text-align:right;'>\
-			<div style='display:inline-block;color:#ccc;'>3:36 PM</div>\
-			<div style='display:inline-block;'>Evan Carlson</div>\
+	<div class='chat-box-container' style='margin-left:auto;'>\
+		<div class='text-right'>\
+			<div class='chat-timestamp'>3:36 PM</div>\
+			<div class='chat-username'>Evan Carlson</div>\
 		</div>\
-		<div style='padding:8px;border-radius:4px;background:#deebf7;'>" + escape_html(message) + "</div>\
+		<div class='chat-bubble-right'>" + escape_html(message) + "</div>\
 	</div>\
 	");
 }
@@ -96,7 +96,6 @@ ws.addEventListener('message', function (event) {
 	}
 	else if(json_parse.num_clients){
 		var num_clients = json_parse.num_clients;
-		$("#num-clients").text(num_clients);
 		
 		pc = new RTCPeerConnection(configuration);
 		
@@ -125,6 +124,9 @@ ws.addEventListener('message', function (event) {
 				console.log("ADDING: ", stream);
 				remoteVideo.srcObject = stream;
 			}
+			setTimeout(() => {
+				$("#remote-video").removeClass("effect-video")
+			}, 1000);
 		};
 		
 		navigator.mediaDevices.getUserMedia({
@@ -133,7 +135,9 @@ ws.addEventListener('message', function (event) {
 				width: {max: '1920'},
 				height: {max: '1080'}
 			}, */
-			video: true,
+			video: {
+				aspectRatio: 1 / 0.7
+			},
 			audio: true
 		}).then(stream => {
 			// Display your local video in #localVideo element
@@ -144,12 +148,12 @@ ws.addEventListener('message', function (event) {
 	}
 	else if(json_parse.chat_message){
 		$("#chatroom-box").append("\
-		<div style='width:92%;margin-right:auto;margin-bottom:15px;'>\
-			<div style='text-align:right;'>\
-				<div style='display:inline-block;color:#ccc;'>3:36 PM</div>\
-				<div style='display:inline-block;'>Brandon Lalonde</div>\
+		<div class='chat-box-container' style='margin-right:auto;'>\
+			<div class='text-right'>\
+				<div class='chat-timestamp'>3:36 PM</div>\
+				<div class='chat-username'>Brandon Lalonde</div>\
 			</div>\
-			<div style='padding:8px;border-radius:4px;background:#f5dede;'>" + escape_html(json_parse.chat_message) + "</div>\
+			<div class='chat-bubble-left'>" + escape_html(json_parse.chat_message) + "</div>\
 		</div>\
 		");
 	}

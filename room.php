@@ -86,14 +86,14 @@
 <input type='hidden' id='sender_id' value='<?php echo $ids['sender_id']; ?>'>
 <input type='hidden' id='acceptor_id' value='<?php echo $ids['acceptor_id']; ?>'>
 <input type='hidden' id='room_id' value='<?php echo $ids['room_id']; ?>'>
-<div id='logo' style='position:absolute;z-index:1;top:15px;'><a href='/'><img src='images/logo.png'> Skill Swap</a></div>
+<div id='logo' style='position:absolute;z-index:1;top:15px;'><a href='/' style='color:#fff;'><img src='images/logo.png'> Skill Swap</a></div>
+<div id='remote-video-standin'>Waiting for other user...</div>
 <video id="local-video" autoplay muted></video>
-<video id="remote-video" autoplay></video>
+<video id="remote-video" class='effect-video' autoplay></video>
 <div id='chatroom'>
-	<div id='chatroom-box' class='inset-box' style='background:#fff;padding:10px;'></div>
+	<div id='chatroom-box' class='inset-box'></div>
 	<textarea id='chat-textarea' style='margin-top:15px;' placeholder='Send message...' onkeypress='return get_key(event)'></textarea>
 </div>
-<div style='position:absolute;top:50px;left:15px;z-index:1;'>Num Clients: <span id='num-clients'></span></div>
 <script src="js/room.js"></script>
 </body>
 </html>
