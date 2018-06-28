@@ -85,7 +85,7 @@ function accept_chat_message(message){
 // Connection opened
 ws.onopen = event => {
 	
-	send_chat_message("You have joined the room.");
+	accept_chat_message("You have joined the room.");
 	
 	//lets the server know who the sender and acceptor are
 	ws.send(JSON.stringify({
@@ -119,6 +119,8 @@ ws.onmessage = event => {
 	}
 	else if(json_parse.num_clients){
 		var num_clients = json_parse.num_clients;
+		
+		console.log("Num Clients: " + num_clients);
 		
 		pc = new RTCPeerConnection(configuration);
 		

@@ -9,7 +9,7 @@ function transmit(data, acceptor_id){
 		//once we've found the right user to send to
 		if(ws.sender_id && ws.sender_id == acceptor_id){
 			ws.send(data);
-			return;
+			return true;
 		}
 	});
 }
@@ -48,6 +48,7 @@ wss.on('connection', ws => {
 					ws.send(JSON.stringify({
 						num_clients: get_num_clients(ws.room_id),
 					}));
+					return true;
 				}
 			}
 			catch(e){}
