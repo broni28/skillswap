@@ -52,32 +52,34 @@ function send_chat_message(message){
 		chat_message: message,
 	}));
 	$("#chat-textarea").val("");
-	$("#chatroom-box").append("\
+	$("\
 	<div class='chat-box-container' style='margin-left:auto;'>\
 		<div class='text-right'>\
 			<div class='chat-timestamp'>3:36 PM</div>\
 			<div class='chat-username'>Evan Carlson</div>\
 		</div>\
 		<div class='overflow'>\
-			<img src='images/instructor.jpg' class='chat-profile'>\
+			<img src='images/evan.jpg' class='chat-profile'>\
 			<div class='chat-bubble-right'>" + escape_html(message) + "</div>\
 		</div>\
 	</div>\
-	");
+	").hide().appendTo("#chatroom-box").fadeIn(500);
+	$("#chatroom-box").scrollTop($("#chatroom-box")[0].scrollHeight);
 }
 function accept_chat_message(message){
-	$("#chatroom-box").append("\
+	$("\
 	<div class='chat-box-container' style='margin-right:auto;'>\
 		<div class='text-right'>\
 			<div class='chat-timestamp'>3:36 PM</div>\
-			<div class='chat-username'>Brandon Lalonde</div>\
+			<div class='chat-username'>Evan Carlson</div>\
 		</div>\
 		<div class='overflow'>\
-			<img src='images/instructor.jpg' class='chat-profile'>\
+			<img src='images/evan.jpg' class='chat-profile'>\
 			<div class='chat-bubble-left'>" + escape_html(message) + "</div>\
 		</div>\
 	</div>\
-	");
+	").hide().appendTo("#chatroom-box").fadeIn(500);
+	$("#chatroom-box").scrollTop($("#chatroom-box")[0].scrollHeight);
 }
 
 // Connection opened

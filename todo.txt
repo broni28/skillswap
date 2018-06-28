@@ -2,10 +2,13 @@ To do:
 
 YO YO YO YO YO, feel free to add stuff to the to do list as you think of things.
 
+Home Page
+	Replace placeholder instructor's with ones actually in the database
+	Add screening process to signing up or becoming an instructor
+
 Student Account Page: This will be the page that the student sees when they log into their account. After signing in, there will be a "My Account" button on the top that will take them to this page
-	Show how much money is in account
-	Billing
-	Previously used tutors
+	Billing (previous payments)
+	Add credit
 	
 Public Instructor Page: This will be the page a student will go to when clicking on the "Check Availability" of a particular instructor
 	Teaching Subject
@@ -14,30 +17,29 @@ Public Instructor Page: This will be the page a student will go to when clicking
 	Availability (Calendar layout)
 	
 Instructor Account Page (dashboard format)
-	Calendar interface **** I THINK THIS ONE WILL TAKE THE LONGEST OUT OF ALL OF THEM ****
-		Instructor will set their available dates using a calendar interface
-		They will set their hours for each day
-		Users will request a time in accordance with the instructor's availability
-		Instructor will receive an email and agree/disagree
-		User is charged for missing a class
+	Calendar interface to set their availability **** I THINK THIS ONE WILL TAKE THE LONGEST OUT OF ALL OF THEM ****
 	Uploaded profile image
-	Link bank account
-	Allow instructors to set dates they are available and unavailable
-	Show money in account
-	Show when next bank transfer will be
-	Upcoming lessons
-	
-Admin Page
-	Payout confirmation
-	Monitoring system
+	Payout mechanism
+	Billing
 	
 Room: This is the URL of 2 people joining a room for video/screen sharing
-	Interface
-		Chat interface
-			"So and so has joined the room"
-			"John (10 minutes ago): Hello there."
-	Behind the scenes
-		Each "room" is an entry in the database that creates a student id and an instructor id
-		Both id's will be a long string (about 200 characters or so)
-		Loading room.php will grab that student id and instructor id from the database and load that into the javascript in one form or another
-		nodeapp.js will transmit from the student id to the teacher id, and vice versa
+	Automatically record and archive session
+	Buttons
+		Mute button
+		Time left
+
+Booking process
+	1) Student and instructor will create accounts with us
+	2) Instructor will set their availibility on their "My Account" page
+	3) Student will add credit to their account
+	4) Student will browse through instructors, choose an instructor, then choose a date/time depending on what availability the instructor has set
+	5) Student will book time, deposit will maybe be taken from their account
+	6) Student gets email confirmation, instructor gets email saying that they have an appointment, and the appointment gets booked in the database
+	7) Daily cron job to check who has appointments that day. Those users will get an email reminder.
+	8) Some time prior to their appointment, they will get a "Join Room" notification whereever on the website they may be
+	9) Both instructor and student will join the room
+Post booking process
+	1) If instructor misses, student gets a refund
+	2) If student misses, instructor gets their deposit
+	3) Student gets an email requesting them to rate their instructor
+	4) Instructor gets paid sometime afterwards
