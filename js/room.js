@@ -10,6 +10,7 @@ var acceptor_id = $("#acceptor_id").val();
 var room_id = $("#room_id").val();
 var both_joined = false;
 var ws = new WebSocket("wss://ecarlson10.webfactional.com:22316");
+var num_clients = 0;
 function escape_html(text) {
   var map = {
     '&': '&amp;',
@@ -27,6 +28,7 @@ function on_offer_created(desc){
 		//if local description is successfully created
 		() => {
 			var message = JSON.stringify({"sdp": pc.localDescription});
+			console.log("Settings local description: ", message);
 			ws.send(message);
 		},
 		on_error
@@ -102,7 +104,8 @@ ws.onmessage = event => {
 	if(json_parse.sdp){
 		pc.setRemoteDescription(new RTCSessionDescription(json_parse.sdp), () => {
 			if (pc.remoteDescription.type === 'offer') {
-			  pc.createAnswer().then(on_offer_created).catch(on_error);
+				console.log("Creating answer");
+				pc.createAnswer().then(on_offer_created).catch(on_error);
 			}
 		}, on_error);
 	}
@@ -118,36 +121,35 @@ ws.onmessage = event => {
 		}
 	}
 	else if(json_parse.num_clients){
-		var num_clients = json_parse.num_clients;
+		num_clients = json_parse.num_clients;
 		
 		console.log("Num Clients: " + num_clients);
 		
 		pc = new RTCPeerConnection(configuration);
 		
 		pc.onicecandidate = e => {
+			console.log("onicecandidate: ", e);
 			if (e.candidate) {
 				var message = JSON.stringify({'candidate': e.candidate});
-				console.log("Message to server: " + message);
 				ws.send(message);
 			}
 		}
 		
 		pc.onnegotiationneeded = () => {
+			console.log("onnegotiationneeded");
 			
 			//The second person to join the room creates the offer
 			if(num_clients == 2){
-				console.log("Creating offer");
 				pc.createOffer(on_offer_created, on_error);
 			}
 		}
 		
 		// When a remote stream arrives display it in the #remoteVideo element
 		pc.ontrack = event => {
+			console.log("ontrack:", event);
 			
-			console.log("Remote stream has arrived:", event);
 			const stream = event.streams[0];
 			if (!remoteVideo.srcObject || remoteVideo.srcObject.id !== stream.id) {
-				console.log("ADDING: ", stream);
 				remoteVideo.srcObject = stream;
 			}
 			setTimeout(() => {
