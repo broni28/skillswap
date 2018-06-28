@@ -16,7 +16,7 @@
 		strlen($_POST['password_confirm']) < 100 &&
 		($_POST['identity'] == 'student' || $_POST['identity'] == 'instructor')
 	){
-		$stmt = $mysqli->prepare("INSERT INTO webcam_users SET email=?, password=?, identity=?");
+		$stmt = $mysqli->prepare("INSERT INTO webcam_users SET email=?, password=?, role=?");
 		$stmt->bind_param("sss", $_POST['email'], $password, $_POST['identity']);
 		$password = hash('sha256', $_POST['password']);
 		$stmt->execute();
