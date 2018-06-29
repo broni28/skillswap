@@ -8,9 +8,10 @@ var remoteVideo = document.getElementById("remote-video");
 var sender_id = $("#sender_id").val();
 var acceptor_id = $("#acceptor_id").val();
 var room_id = $("#room_id").val();
-var both_joined = false;
-var ws = new WebSocket("wss://ecarlson10.webfactional.com:22316");
 var num_clients = 0;
+var both_joined = false;
+var offer_created = false;
+var ws = new WebSocket("wss://ecarlson10.webfactional.com:25812");
 function escape_html(text) {
   var map = {
     '&': '&amp;',
@@ -140,7 +141,10 @@ ws.onmessage = event => {
 			
 			//The second person to join the room creates the offer
 			if(num_clients == 2){
-				pc.createOffer(on_offer_created, on_error);
+				if(!offer_created){
+					offer_created = true;
+					pc.createOffer(on_offer_created, on_error);
+				}
 			}
 		}
 		
