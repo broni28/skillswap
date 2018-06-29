@@ -1,0 +1,5 @@
+Setting up node.js:
+https://www.youtube.com/watch?v=TPLAd-j9tMs
+
+Simple video chat code:
+https://www.scaledrone.com/blog/posts/webrtc-tutorial-simple-video-chat
