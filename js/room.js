@@ -88,17 +88,26 @@ function accept_chat_message(message){
 }
 function toggle_connect(){
 	
-	var tracks = local_video.srcObject.getTracks();
-	if(toggle_streaming == true){
-		toggle_streaming = false;
-		tracks.forEach(track => {
-			track.stop();
-		});
-	}
-	else{
-		toggle_streaming = true;
-		offer_created = false;
-		get_user_media();
+	//enable or disable stream depending on the global toggle_streaming variable
+	if(local_video.srcObject){		
+		var tracks = local_video.srcObject.getTracks();
+		if(toggle_streaming == true){
+			toggle_streaming = false;
+			tracks.forEach(track => {
+				track.stop();
+			});
+			
+			$("#toggle").addClass("toggle-off");
+			$("#toggle-inner").addClass("toggle-off-inner");
+		}
+		else{
+			toggle_streaming = true;
+			offer_created = false;
+			get_user_media();
+			
+			$("#toggle").removeClass("toggle-off");
+			$("#toggle-inner").removeClass("toggle-off-inner");
+		}
 	}
 }
 function get_user_media(){

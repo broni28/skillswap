@@ -189,6 +189,15 @@ textarea{
 .transition-all{
 	transition:2s ease padding;
 }
+.transition-toggle{
+	transition:1s ease all;
+}
+.toggle-off{
+	background:red !important;
+}
+.toggle-off-inner{
+	left:2px !important;
+}
 /*----SECTION 1----*/
 #section1-wrap{
 	background:url(/images/section1-wrap.jpg) center 0 no-repeat;
@@ -344,6 +353,9 @@ textarea{
 	color:#fff;
 	font-size:40px;
 }
+#remote-video-standin, #room-buttons{
+	width:calc(100vh / 0.7);
+}
 #chatroom{
 	position:absolute;
 	top:0;
@@ -419,4 +431,32 @@ textarea{
 	border-radius:50%;
 	float:left;
 	margin-right:15px;
+}
+#room-buttons{
+	padding:5px 0;
+	background:rgba(0, 0, 0, 0.5);
+	color:#fff;
+	z-index:1;
+	position:absolute;
+	bottom:0;
+}
+#toggle{
+	display:inline-block;
+	width:50px;
+	height:26px;
+	border-radius:13px;
+	cursor:pointer;
+	background:#00ff08;
+	box-shadow:inset 0 0 10px #000;
+	transform:scale(0.8);
+}
+#toggle-inner{
+	border-radius:50%;
+	height:22px;
+	width:22px;
+	box-shadow: -1px 0px 7px #4a4a4a;
+	position:absolute;
+	top:2px;
+	left:calc(100% - 2px - 22px);
+	background:#efefef;
 }

@@ -83,7 +83,12 @@
 	?>
 </head>
 <body id='body-room'>
-<button style='z-index:1;position:absolute;top:100px;left:100px;' onclick='toggle_connect()'>Toggle</button>
+<div id='room-buttons'>
+	<div class='transition-toggle' id='toggle' onclick='toggle_connect()'>
+		<div class='transition-toggle' id='toggle-inner'></div>
+	</div>
+	<?php echo file_get_contents('images/video.svg'); ?>
+</div>
 <input type='hidden' id='sender_id' value='<?php echo $ids['sender_id']; ?>'>
 <input type='hidden' id='acceptor_id' value='<?php echo $ids['acceptor_id']; ?>'>
 <input type='hidden' id='room_id' value='<?php echo $ids['room_id']; ?>'>
