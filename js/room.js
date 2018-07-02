@@ -3,14 +3,16 @@ const configuration = {
     urls: 'stun:stun.l.google.com:19302'
   }]
 };
-var localVideo = document.getElementById("local-video");
-var remoteVideo = document.getElementById("remote-video");
+var pc;
+var local_video = document.getElementById("local-video");
+var remote_video = document.getElementById("remote-video");
 var sender_id = $("#sender_id").val();
 var acceptor_id = $("#acceptor_id").val();
 var room_id = $("#room_id").val();
 var num_clients = 0;
 var both_joined = false;
 var offer_created = false;
+var toggle_streaming = true;
 var ws = new WebSocket("wss://ecarlson10.webfactional.com:25812");
 function escape_html(text) {
   var map = {
@@ -29,14 +31,14 @@ function on_offer_created(desc){
 		//if local description is successfully created
 		() => {
 			var message = JSON.stringify({"sdp": pc.localDescription});
-			console.log("Settings local description: ", message);
+			//console.log("Settings local description: ", message);
 			ws.send(message);
 		},
 		on_error
 	);
 }
 function on_error(err){
-	console.log("Error: " + err);
+	//console.log("Error: " + err);
 }
 function get_key(e){
 	if(e.keyCode == 13){
@@ -84,6 +86,39 @@ function accept_chat_message(message){
 	").hide().appendTo("#chatroom-box").fadeIn(500);
 	$("#chatroom-box").scrollTop($("#chatroom-box")[0].scrollHeight);
 }
+function toggle_connect(){
+	
+	var tracks = local_video.srcObject.getTracks();
+	if(toggle_streaming == true){
+		toggle_streaming = false;
+		tracks.forEach(track => {
+			track.stop();
+		});
+	}
+	else{
+		toggle_streaming = true;
+		offer_created = false;
+		get_user_media();
+	}
+}
+function get_user_media(){
+	navigator.mediaDevices.getUserMedia({
+		/* video: {
+			mediaSource: "screen", // whole screen sharing
+			width: {max: '1920'},
+			height: {max: '1080'}
+		}, */
+		video: {
+			aspectRatio: 1 / 0.7
+		},
+		audio: true
+	}).then(stream => {
+		// Display your local video in #local_video element
+		local_video.srcObject = stream;
+		// Add your stream to be sent to the conneting peer
+		stream.getTracks().forEach(track => pc.addTrack(track, stream));
+	}, on_error);
+}
 
 // Connection opened
 ws.onopen = event => {
@@ -105,14 +140,14 @@ ws.onmessage = event => {
 	if(json_parse.sdp){
 		pc.setRemoteDescription(new RTCSessionDescription(json_parse.sdp), () => {
 			if (pc.remoteDescription.type === 'offer') {
-				console.log("Creating answer");
+				//console.log("Creating answer");
 				pc.createAnswer().then(on_offer_created).catch(on_error);
 			}
 		}, on_error);
 	}
 	else if(json_parse.candidate){
 		// Add the new ICE candidate to our connections remote description
-		console.log("Adding ICE candidate:", json_parse.candidate);
+		//console.log("Adding ICE candidate:", json_parse.candidate);
 		pc.addIceCandidate(
 			new RTCIceCandidate(json_parse.candidate), function(){}, on_error
 		);
@@ -124,12 +159,12 @@ ws.onmessage = event => {
 	else if(json_parse.num_clients){
 		num_clients = json_parse.num_clients;
 		
-		console.log("Num Clients: " + num_clients);
+		//console.log("Num Clients: " + num_clients);
 		
 		pc = new RTCPeerConnection(configuration);
 		
 		pc.onicecandidate = e => {
-			console.log("onicecandidate: ", e);
+			//console.log("onicecandidate: ", e);
 			if (e.candidate) {
 				var message = JSON.stringify({'candidate': e.candidate});
 				ws.send(message);
@@ -137,7 +172,7 @@ ws.onmessage = event => {
 		}
 		
 		pc.onnegotiationneeded = () => {
-			console.log("onnegotiationneeded");
+			//console.log("onnegotiationneeded");
 			
 			//The second person to join the room creates the offer
 			if(num_clients == 2){
@@ -148,35 +183,18 @@ ws.onmessage = event => {
 			}
 		}
 		
-		// When a remote stream arrives display it in the #remoteVideo element
+		// When a remote stream arrives display it in the #remote_video element
 		pc.ontrack = event => {
-			console.log("ontrack:", event);
+			//console.log("ontrack:", event);
 			
 			const stream = event.streams[0];
-			if (!remoteVideo.srcObject || remoteVideo.srcObject.id !== stream.id) {
-				remoteVideo.srcObject = stream;
-			}
+			remote_video.srcObject = stream;
 			setTimeout(() => {
 				$("#remote-video").removeClass("effect-video")
 			}, 1000);
-		};
+		}
 		
-		navigator.mediaDevices.getUserMedia({
-			/* video: {
-				mediaSource: "screen", // whole screen sharing
-				width: {max: '1920'},
-				height: {max: '1080'}
-			}, */
-			video: {
-				aspectRatio: 1 / 0.7
-			},
-			audio: true
-		}).then(stream => {
-			// Display your local video in #localVideo element
-			localVideo.srcObject = stream;
-			// Add your stream to be sent to the conneting peer
-			stream.getTracks().forEach(track => pc.addTrack(track, stream));
-		}, on_error);
+		get_user_media();
 	}
 	else if(json_parse.chat_message){
 		accept_chat_message(json_parse.chat_message);
