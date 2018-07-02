@@ -190,7 +190,7 @@ textarea{
 	transition:2s ease padding;
 }
 .transition-toggle{
-	transition:1s ease all;
+	transition:0.5s ease all;
 }
 .toggle-off{
 	background:red !important;
@@ -328,9 +328,9 @@ textarea{
 }
 #local-video{
 	z-index:1;
-	width:250px;
+	width:200px;
 	position:absolute;
-	bottom:25px;
+	bottom:calc(25px + 39px);
 	right:calc(25px + 100% - (100vh / 0.7));
 }
 #remote-video{
