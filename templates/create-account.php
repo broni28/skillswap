@@ -3,7 +3,7 @@
 		This page creates their account. It will validate that there username and password are both less than 100 characters, and then enter there credentials into the database
 	*/
 	
-	
+	session_start();
 	require_once("/home/ecarlson10/settings.php");
 	
 	if(
@@ -24,6 +24,7 @@
 			echo $stmt->error;
 			exit;
 		}
+		$_SESSION['email'] = $_POST['email'];
 		$stmt->close();
 	}
 

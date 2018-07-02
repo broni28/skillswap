@@ -4,7 +4,7 @@
 		<div class='center-40'>
 			<div class='flex'>
 				<div>
-					<h1>Online webcam tutoring made simple</h1>
+					<h1>Webcam tutoring made simple</h1>
 					<p>Finding a qualified tutor shouldn't be difficult. Learn from the best in the comfort of your own home.</p>
 					<a class='button' href='javascript:;'>Get Started</a>
 				</div>
