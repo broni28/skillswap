@@ -31,14 +31,14 @@ function on_offer_created(desc){
 		//if local description is successfully created
 		() => {
 			var message = JSON.stringify({"sdp": pc.localDescription});
-			//console.log("Settings local description: ", message);
+			console.log("Settings local description: ", message);
 			ws.send(message);
 		},
 		on_error
 	);
 }
 function on_error(err){
-	//console.log("Error: " + err);
+	console.log("Error: " + err);
 }
 function get_key(e){
 	if(e.keyCode == 13){
@@ -149,14 +149,14 @@ ws.onmessage = event => {
 	if(json_parse.sdp){
 		pc.setRemoteDescription(new RTCSessionDescription(json_parse.sdp), () => {
 			if (pc.remoteDescription.type === 'offer') {
-				//console.log("Creating answer");
+				console.log("Creating answer");
 				pc.createAnswer().then(on_offer_created).catch(on_error);
 			}
 		}, on_error);
 	}
 	else if(json_parse.candidate){
 		// Add the new ICE candidate to our connections remote description
-		//console.log("Adding ICE candidate:", json_parse.candidate);
+		console.log("Adding ICE candidate:", json_parse.candidate);
 		pc.addIceCandidate(
 			new RTCIceCandidate(json_parse.candidate), function(){}, on_error
 		);
@@ -168,12 +168,12 @@ ws.onmessage = event => {
 	else if(json_parse.num_clients){
 		num_clients = json_parse.num_clients;
 		
-		//console.log("Num Clients: " + num_clients);
+		console.log("Num Clients: " + num_clients);
 		
 		pc = new RTCPeerConnection(configuration);
 		
 		pc.onicecandidate = e => {
-			//console.log("onicecandidate: ", e);
+			console.log("onicecandidate: ", e);
 			if (e.candidate) {
 				var message = JSON.stringify({'candidate': e.candidate});
 				ws.send(message);
@@ -181,7 +181,7 @@ ws.onmessage = event => {
 		}
 		
 		pc.onnegotiationneeded = () => {
-			//console.log("onnegotiationneeded");
+			console.log("onnegotiationneeded");
 			
 			//The second person to join the room creates the offer
 			if(num_clients == 2){
@@ -194,7 +194,7 @@ ws.onmessage = event => {
 		
 		// When a remote stream arrives display it in the #remote_video element
 		pc.ontrack = event => {
-			//console.log("ontrack:", event);
+			console.log("ontrack:", event);
 			
 			const stream = event.streams[0];
 			remote_video.srcObject = stream;
