@@ -52,6 +52,22 @@
 		display:none;
 	}
 }
+@media only screen and (min-width: 1px) and (max-width: 800px){
+	/*CHATROOM MOBILE OPTIMIZATION*/
+	#chatroom{
+		width:calc(100% - 30px);
+		display:none;
+	}
+	#remote-video, #remote-video-standin, #room-buttons{
+		width:100%;
+	}
+	#room-buttons{
+		width:100%;
+	}
+	#local-video{
+		right:25px;
+	}
+}
 @media only screen and (min-width: 1px) and (max-width: 600px){
 	.wide-33{
 		width:100% !important;

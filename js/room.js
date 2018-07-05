@@ -1,7 +1,17 @@
 const configuration = {
 	"iceServers":[
-		{"urls":["stun:64.233.169.127:19302","stun:[2607:f8b0:4003:c08::7f]:19302"]},
-		{"urls":["turn:64.233.169.127:19305?transport=udp","turn:[2607:f8b0:4003:c08::7f]:19305?transport=udp","turn:64.233.169.127:19305?transport=tcp","turn:[2607:f8b0:4003:c08::7f]:19305?transport=tcp"],"username":"CIif/9kFEgYHQFzPVHUYzc/s6OMTIICjBQ","credential":"ox66ZJmDefjUSGsNAHyCcW7y2Ho="}
+		{"urls":[
+			"stun:64.233.169.127:19302",
+			"stun:[2607:f8b0:4003:c08::7f]:19302"
+		]},
+		{"urls":[
+			"turn:64.233.169.127:19305?transport=udp",
+			"turn:[2607:f8b0:4003:c08::7f]:19305?transport=udp",
+			"turn:64.233.169.127:19305?transport=tcp",
+			"turn:[2607:f8b0:4003:c08::7f]:19305?transport=tcp"],
+			"username":"CIif/9kFEgYHQFzPVHUYzc/s6OMTIICjBQ",
+			"credential":"ox66ZJmDefjUSGsNAHyCcW7y2Ho="
+		}
 	]
 };
 var pc;
@@ -118,9 +128,7 @@ function get_user_media(){
 			width: {max: '1920'},
 			height: {max: '1080'}
 		}, */
-		video: {
-			aspectRatio: 1 / 0.7
-		},
+		video: true,
 		audio: true
 	}).then(stream => {
 		// Display your local video in #local_video element
