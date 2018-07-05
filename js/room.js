@@ -1,7 +1,8 @@
 const configuration = {
-  iceServers: [{
-    urls: 'stun:stun.l.google.com:19302'
-  }]
+	"iceServers":[
+		{"urls":["stun:64.233.169.127:19302","stun:[2607:f8b0:4003:c08::7f]:19302"]},
+		{"urls":["turn:64.233.169.127:19305?transport=udp","turn:[2607:f8b0:4003:c08::7f]:19305?transport=udp","turn:64.233.169.127:19305?transport=tcp","turn:[2607:f8b0:4003:c08::7f]:19305?transport=tcp"],"username":"CIif/9kFEgYHQFzPVHUYzc/s6OMTIICjBQ","credential":"ox66ZJmDefjUSGsNAHyCcW7y2Ho="}
+	]
 };
 var pc;
 var local_video = document.getElementById("local-video");
@@ -148,7 +149,7 @@ ws.onmessage = event => {
 	
 	if(json_parse.sdp){
 		pc.setRemoteDescription(new RTCSessionDescription(json_parse.sdp), () => {
-			if (pc.remoteDescription.type === 'offer') {
+			if(pc.remoteDescription.type === 'offer'){
 				console.log("Creating answer");
 				pc.createAnswer().then(on_offer_created).catch(on_error);
 			}
