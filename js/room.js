@@ -183,6 +183,10 @@ ws.onmessage = event => {
 			}
 		}
 		
+		pc.onsignalingstatechange = event => {
+			console.log("onsignalingstatechange", event);
+		}
+		
 		pc.onnegotiationneeded = () => {
 			console.log("onnegotiationneeded");
 			
