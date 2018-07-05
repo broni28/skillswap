@@ -174,9 +174,12 @@ ws.onmessage = event => {
 		
 		pc.onicecandidate = e => {
 			console.log("onicecandidate: ", e);
-			if (e.candidate) {
+			if(e.candidate){
 				var message = JSON.stringify({'candidate': e.candidate});
 				ws.send(message);
+			}
+			else{
+				console.log("All candidates have been sent");
 			}
 		}
 		
