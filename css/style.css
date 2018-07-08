@@ -345,7 +345,7 @@ textarea{
 	object-fit:cover;
 }
 #remote-video{
-	transition:1s ease all;
+	transition:1s ease transform;
 	height:100vh;
 }
 #remote-video-standin{

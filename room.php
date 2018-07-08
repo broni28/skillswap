@@ -95,12 +95,10 @@
 <input type='hidden' id='room_id' value='<?php echo $ids['room_id']; ?>'>
 <div id='logo' style='position:absolute;z-index:1;top:15px;'><a href='/' style='color:#fff;'><img src='images/logo.png'> Skill Swap</a></div>
 <div id='remote-video-standin'>
-	<!-- 
 	<div class='text-center'>
 		<div>Waiting for other user...</div>
 		<img src='images/loading.gif'>
 	</div>
-	-->
 </div>
 <video id="local-video" autoplay muted></video>
 <video id="remote-video" class='effect-video' autoplay></video>
