@@ -97,6 +97,24 @@ function accept_chat_message(message){
 	").hide().appendTo("#chatroom-box").fadeIn(500);
 	$("#chatroom-box").scrollTop($("#chatroom-box")[0].scrollHeight);
 }
+function get_user_media(){
+	navigator.mediaDevices.getUserMedia({
+		/* video: {
+			mediaSource: "screen", // whole screen sharing
+			width: {max: '1920'},
+			height: {max: '1080'}
+		}, */
+		video: true,
+		audio: true
+	}).then(stream => {
+		// Display your local video in #local_video element
+		local_video.srcObject = stream;
+		// Add your stream to be sent to the conneting peer
+		stream.getTracks().forEach(track => pc.addTrack(track, stream));
+	}, on_error);
+}
+
+/*----BUTTONS----*/
 function toggle_connect(){
 	
 	//enable or disable stream depending on the global toggle_streaming variable
@@ -121,21 +139,14 @@ function toggle_connect(){
 		}
 	}
 }
-function get_user_media(){
-	navigator.mediaDevices.getUserMedia({
-		/* video: {
-			mediaSource: "screen", // whole screen sharing
-			width: {max: '1920'},
-			height: {max: '1080'}
-		}, */
-		video: true,
-		audio: true
-	}).then(stream => {
-		// Display your local video in #local_video element
-		local_video.srcObject = stream;
-		// Add your stream to be sent to the conneting peer
-		stream.getTracks().forEach(track => pc.addTrack(track, stream));
-	}, on_error);
+function toggle_fullscreen(){
+	var video = $("#remote-video");
+	if(video.hasClass("fullscreen")){
+		video.removeClass("fullscreen");
+	}
+	else{
+		video.addClass("fullscreen");
+	}
 }
 
 // Connection opened

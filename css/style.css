@@ -341,9 +341,11 @@ textarea{
 	top:0;
 	left:0;
 }
-#remote-video{
-	transition:1s ease transform;
+.fullscreen{
 	object-fit:cover;
+}
+#remote-video{
+	transition:1s ease all;
 	height:100vh;
 }
 #remote-video-standin{
@@ -356,7 +358,7 @@ textarea{
 	font-size:40px;
 }
 #chatroom{
-	position:absolute;
+	position:fixed;
 	top:0;
 	right:0;
 	/* The 0.7 part is height to width ratio. The last part accounts for the padding */
@@ -432,16 +434,28 @@ textarea{
 	margin-right:15px;
 }
 #room-buttons{
-	padding:10px 0;
+	padding:12px 0;
+	display:flex;
+	align-items:center;
 	background:rgba(0, 0, 0, 0.5);
 	color:#fff;
 	z-index:1;
-	position:absolute;
+	position:fixed;
 	bottom:0;
+}
+#room-buttons svg{
+	fill:#fff;
+	margin:1px 0 1px 5px;
+	width:18px;
+	height:18px;
+}
+#svg-fullscreen{
+	position:absolute;
+	right:15px;
+	cursor:pointer;
 }
 #toggle{
 	margin-left:15px;
-	display:inline-block;
 	width:36px;
 	height:20px;
 	border-radius:15px;

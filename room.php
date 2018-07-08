@@ -88,6 +88,7 @@
 		<div class='transition-toggle' id='toggle-inner'></div>
 	</div>
 	<?php echo file_get_contents('images/video.svg'); ?>
+	<?php echo file_get_contents('images/full-screen.svg'); ?>
 </div>
 <input type='hidden' id='sender_id' value='<?php echo $ids['sender_id']; ?>'>
 <input type='hidden' id='acceptor_id' value='<?php echo $ids['acceptor_id']; ?>'>
