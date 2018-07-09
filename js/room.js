@@ -71,7 +71,7 @@ function send_chat_message(message){
 	$("\
 	<div class='chat-box-container' style='margin-left:auto;'>\
 		<div class='text-right'>\
-			<div class='chat-timestamp'>3:36 PM</div>\
+			<div class='chat-timestamp'>" + get_timestamp() + "</div>\
 			<div class='chat-username'>Evan Carlson</div>\
 		</div>\
 		<div class='overflow'>\
@@ -86,7 +86,7 @@ function accept_chat_message(message){
 	$("\
 	<div class='chat-box-container' style='margin-right:auto;'>\
 		<div class='text-right'>\
-			<div class='chat-timestamp'>3:36 PM</div>\
+			<div class='chat-timestamp'>" + get_timestamp() + "</div>\
 			<div class='chat-username'>Evan Carlson</div>\
 		</div>\
 		<div class='overflow'>\
@@ -96,6 +96,24 @@ function accept_chat_message(message){
 	</div>\
 	").hide().appendTo("#chatroom-box").fadeIn(500);
 	$("#chatroom-box").scrollTop($("#chatroom-box")[0].scrollHeight);
+}
+function get_timestamp(){
+	var date = new Date();
+	var hours = date.getHours();
+	var minutes = date.getMinutes();
+	var ampm;
+	if(hours > 12){
+		hours -= 12;
+		ampm = "PM";
+	}
+	else{
+		ampm = "AM";
+	}
+	if(minutes < 10){
+		minutes = "0" + minutes;
+	}
+	
+	return hours + ":" + minutes + " " + ampm;
 }
 function get_user_media(){
 	navigator.mediaDevices.getUserMedia({
