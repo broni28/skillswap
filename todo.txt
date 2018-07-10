@@ -3,12 +3,13 @@ To do:
 YO YO YO YO YO, feel free to add stuff to the to do list as you think of things.
 
 Top Priorities
-	Chatroom actual time
+	Student account page
+	Instructor account page
 	Chatroom actual profile picture
-	Homepage replace placeholders
+	Replace placeholder instructors with ones actually in the database
 
 Home Page
-	Replace placeholder instructor's with ones actually in the database
+	Replace placeholder instructors with ones actually in the database
 	Add screening process to signing up or becoming an instructor
 
 Student Account Page: This will be the page that the student sees when they log into their account. After signing in, there will be a "My Account" button on the top that will take them to this page
