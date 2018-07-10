@@ -1,11 +1,10 @@
 <?php
 	session_start();
+	require_once('/home/ecarlson10/settings.php');
+	require_once("templates/classes.php");
 	
-	//if we visit a protected page and we're not logged int
-	if($page['protected'] && !$_SESSION['email']){
-		header("Location: /");
-		exit;
-	}
+	$webpage = new Webpage;
+	$user_info = $webpage->get_user_info();
 ?>
 <!DOCTYPE HTML>
 <html>

@@ -3,8 +3,10 @@ To do:
 YO YO YO YO YO, feel free to add stuff to the to do list as you think of things.
 
 Top Priorities
+	Fade out waiting for user message when they join
 	Student account page
 	Instructor account page
+	Chatroom button for mobile
 	Chatroom actual profile picture
 	Replace placeholder instructors with ones actually in the database
 
