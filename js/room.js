@@ -166,6 +166,9 @@ function toggle_fullscreen(){
 		video.addClass("fullscreen");
 	}
 }
+function toggle_chat(){
+	toggle_height("#chatroom");
+}
 
 // Connection opened
 ws.onopen = event => {
@@ -251,7 +254,7 @@ ws.onmessage = event => {
 			}, 1000);
 		}
 		
-		get_user_media();
+		//get_user_media();
 	}
 	else if(json_parse.chat_message){
 		accept_chat_message(json_parse.chat_message);

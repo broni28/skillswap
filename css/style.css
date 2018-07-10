@@ -380,7 +380,7 @@ th, td{
 #chatroom-box{
 	background:#fff;
 	padding:10px;
-	height:calc(100vh - 113px);
+	height:calc(100% - 83px);
 	overflow-y:auto;
 }
 #chatroom-box, #chatroom textarea{
@@ -455,14 +455,19 @@ th, td{
 }
 #room-buttons svg{
 	fill:#fff;
-	margin:1px 0 1px 5px;
+	margin:1px 15px 1px 5px;
 	width:18px;
 	height:18px;
-}
-#svg-fullscreen{
-	position:absolute;
-	right:15px;
 	cursor:pointer;
+	transition:0.3s ease transform, 0.3s ease fill;
+}
+#room-buttons svg:hover{
+	transform:scale(1.2);
+	fill:#ddd;
+}
+#room-buttons-right{
+	position:absolute;
+	right:0;
 }
 #toggle{
 	margin-left:15px;
@@ -483,4 +488,7 @@ th, td{
 	top:2px;
 	left:calc(100% - 2px - 16px);
 	background:#efefef;
+}
+#chat-svg{
+	display:none;
 }

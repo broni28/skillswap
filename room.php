@@ -8,6 +8,8 @@
 	
 	$room = new Room;
 	$ids = $room->fetch_ids();
+	
+	$show_stuff = false;
 ?>
 <!DOCTYPE HTML?>
 <html>
@@ -22,19 +24,26 @@
 		<div class='transition-toggle' id='toggle-inner'></div>
 	</div>
 	<?php echo file_get_contents('images/video.svg'); ?>
-	<?php echo file_get_contents('images/full-screen.svg'); ?>
+	<div id='room-buttons-right'>	
+		<?php echo file_get_contents('images/chat.svg'); ?>
+		<?php echo file_get_contents('images/full-screen.svg'); ?>
+	</div>
 </div>
 <input type='hidden' id='sender_id' value='<?php echo $ids['sender_id']; ?>'>
 <input type='hidden' id='acceptor_id' value='<?php echo $ids['acceptor_id']; ?>'>
 <input type='hidden' id='room_id' value='<?php echo $ids['room_id']; ?>'>
-<div id='logo' style='position:absolute;z-index:1;top:15px;'><a href='/' style='color:#fff;'><img src='images/logo.png'> Skill Swap</a></div>
+<?php if($show_stuff): ?>
+	<div id='logo' style='position:absolute;z-index:1;top:15px;'><a href='/' style='color:#fff;'><img src='images/logo.png'> Skill Swap</a></div>
+<?php endif; ?>
 <div id='remote-video-standin'>
 	<div id='loading-message-success' class='text-center' style='display:none;'>Connecting...</div>
 	<div id='loading-message'>
-		<div class='text-center'>
-			<div>Waiting for other user...</div>
-			<img src='images/loading.gif'>
-		</div>
+		<?php if($show_stuff): ?>
+			<div class='text-center'>
+				<div>Waiting for other user...</div>
+				<img src='images/loading.gif'>
+			</div>
+		<?php endif; ?>
 	</div>
 </div>
 <video id="local-video" autoplay muted></video>

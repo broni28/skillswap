@@ -56,7 +56,11 @@
 	/*CHATROOM MOBILE OPTIMIZATION*/
 	#chatroom{
 		width:calc(100% - 30px);
+		height:calc(100vh - 74px);
 		display:none;
+	}
+	#chat-svg{
+		display:inline;
 	}
 	#remote-video, #remote-video-standin, #room-buttons{
 		width:100%;
