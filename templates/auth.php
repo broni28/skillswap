@@ -32,6 +32,6 @@
 	}
 	
 	
-	header("Location: /");
+	header("Location: /account.php");
 	exit;
 ?>

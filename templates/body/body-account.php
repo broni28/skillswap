@@ -1,5 +1,67 @@
 <?php if($_SERVER['PHP_SELF'] == '/' . $page['body'] . ".php" && $_SESSION['email']): ?>
-	<?php if('student' == 'student'): ?>
+	<?php $user_info['role'] = 'instructor';if($user_info['role'] == 'instructor'): ?>
+		<div id='section6-wrap'>
+			<div class='center-40'>
+				<div class='text-center' style='padding:15px 0;margin:15px 0;background:#000;color:#fff;'>You have a meeting in 5 minutes <a href='room.php?id=1'>Join Room</a></div>
+				<h2>Set your availability:</h2>
+				<h3>March</h3>
+				<table>
+					<tr>
+						<th>Sunday</th>
+						<th>Monday</th>
+						<th>Tuesday</th>
+						<th>Wednesday</th>
+						<th>Thursday</th>
+						<th>Friday</th>
+						<th>Saturday</th>
+					</tr>
+					
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>5</td>
+						<td>6</td>
+						<td>7</td>
+					</tr>
+					
+					<tr>
+						<td>8</td>
+						<td>9</td>
+						<td>10</td>
+						<td>11</td>
+						<td>12</td>
+						<td>13</td>
+						<td>14</td>
+					</tr>
+					
+					<tr>
+						<td>15</td>
+						<td>16</td>
+						<td>17</td>
+						<td>18</td>
+						<td>19</td>
+						<td>20</td>
+						<td>21</td>
+					</tr>
+					
+					<tr>
+						<td>22</td>
+						<td>23</td>
+						<td>24</td>
+						<td>25</td>
+						<td>26</td>
+						<td>27</td>
+						<td>28</td>
+					</tr>
+					
+				</table>
+				
+				<div></div>
+			</div>
+		</div>
+	<?php elseif($user_info['role'] == 'student'): ?>
 		<div id='section5-wrap'>
 			<h1 class='text-center'>My Account</h1>
 		</div>
@@ -39,7 +101,5 @@
 				</div>
 			</div>
 		</div>
-	<?php elseif($user_info['role'] == 'instructor'): ?>
-		You are an instructor
 	<?php endif; ?>
 <?php endif; ?>

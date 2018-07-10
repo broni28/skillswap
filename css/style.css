@@ -36,6 +36,13 @@ input, textarea, .inset-box{
 textarea{
 	resize:none;
 }
+table{
+	border-collapse:collapse;
+}
+th, td{
+	border:1px solid #9a9a9a;
+	padding:5px;
+}
 .button{
 	background:#903a1f;
 	color:#fff;

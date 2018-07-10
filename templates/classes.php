@@ -14,7 +14,7 @@
 				}
 			}
 		}
-		private function go_home(){
+		protected function go_home(){
 			header("Location: /");
 			exit;
 		}
