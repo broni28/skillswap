@@ -200,6 +200,9 @@ ws.onmessage = event => {
 		);
 		if(!both_joined){			
 			accept_chat_message("Other person has joined the room.");
+			$("#loading-message").fadeOut(() => {
+				$("#loading-message-success").fadeIn(800).fadeOut(800).fadeIn(800).fadeOut(800).fadeIn(800).fadeOut(800);
+			});
 			both_joined = true;
 		}
 	}
