@@ -36,12 +36,6 @@ input, textarea, .inset-box{
 textarea{
 	resize:none;
 }
-table{
-	border-collapse:collapse;
-}
-th, td{
-	padding:5px;
-}
 .button{
 	background:#903a1f;
 	color:#fff;
@@ -496,4 +490,25 @@ th, td{
 }
 #chat-svg{
 	display:none;
+}
+/*----CALENDAR----*/
+table{
+	border-collapse:collapse;
+	background:#fff;
+}
+th, td{
+	padding:7px;
+	text-align:center;
+}
+tr:nth-child(1) td{
+	padding:15px 7px;
+}
+.weekly-calendar{
+	width:100%;
+}
+.weekly-calendar th, .weekly-calendar td{
+	border-right:3px solid #e9f2f1;
+	border-left:3px solid #e9f2f1;
+	border-top:1px solid #e9f2f1;
+	border-bottom:1px solid #e9f2f1;
 }
