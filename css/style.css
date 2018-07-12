@@ -279,6 +279,12 @@ th, td{
 	width:calc(25% - 20px);
 	/* box-shadow:4px 4px 4px #ddd; */
 }
+.check-avail-button{
+	color:#fff;
+	background:#ff8300;
+	padding:5px 10px;
+	border-radius:2px;
+}
 /*----SECTION 5----*/
 #section5-wrap{
 	background:url(/images/section5-wrap.jpg) center center no-repeat;

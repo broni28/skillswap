@@ -128,7 +128,7 @@
 						<div style='text-align:center;background:rgba(0,255,31,0.16);color:#20b370;border-top:2px solid #9dbfb0;border-bottom:2px solid #9dbfb0;padding:5px 0;font-size:19px;margin:5px 0;'>$15 per hour</div>
 						<div>Lorem ipsum dolor sit amet, in duo quaeque omittantur, audire tincidunt eu vis. Dolor labitur no mea. Eam id...</div>
 						<div style='text-align:center;margin-top:10px;'>
-							<a href='javascript:;' style='color:#fff;background:#ff8300;padding:5px 10px;border-radius:2px;box-shadow:'>Check Availability</a>
+							<a href='availability.php' class='check-avail-button'>Check Availability</a>
 						</div>
 					</div>
 				</div>
