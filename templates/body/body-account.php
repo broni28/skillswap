@@ -5,8 +5,11 @@
 				<div class='text-center' style='padding:15px 0;margin:15px 0;background:#000;color:#fff;'>You have a meeting in 5 minutes <a href='room.php?id=1'>Join Room</a></div>
 				<h2>Set your availability:</h2>
 				<h3>March</h3>
+				<div>July 1 - 7</div>
+				
 				<table>
 					<tr>
+						<th>Time</th>
 						<th>Sunday</th>
 						<th>Monday</th>
 						<th>Tuesday</th>
@@ -15,47 +18,23 @@
 						<th>Friday</th>
 						<th>Saturday</th>
 					</tr>
-					
-					<tr>
-						<td>1</td>
-						<td>2</td>
-						<td>3</td>
-						<td>4</td>
-						<td>5</td>
-						<td>6</td>
-						<td>7</td>
-					</tr>
-					
-					<tr>
-						<td>8</td>
-						<td>9</td>
-						<td>10</td>
-						<td>11</td>
-						<td>12</td>
-						<td>13</td>
-						<td>14</td>
-					</tr>
-					
-					<tr>
-						<td>15</td>
-						<td>16</td>
-						<td>17</td>
-						<td>18</td>
-						<td>19</td>
-						<td>20</td>
-						<td>21</td>
-					</tr>
-					
-					<tr>
-						<td>22</td>
-						<td>23</td>
-						<td>24</td>
-						<td>25</td>
-						<td>26</td>
-						<td>27</td>
-						<td>28</td>
-					</tr>
-					
+					<?php 
+						$time_arr = array('12 AM','1 AM','2 AM','3 AM','4 AM','5 AM','6 AM','7 AM','8 AM','9 AM','10 AM','11 AM','12 PM','1 PM','2 PM','3 PM','4 PM','5 PM','6 PM','7 PM','8 PM','9 PM','10 PM','11 PM');
+						while($time_arr){
+							echo "<tr>";
+							echo "<td>" . array_shift($time_arr) . "</td>";
+							for($i = 0; $i < 7; $i++){
+								if(rand(1,2) == 1){
+									$color = '00b388';
+								}
+								else{
+									$color = "123456";
+								}
+								echo "<td style='background:#" . $color . ";width:40px;'></td>";
+							}
+							echo "</tr>";
+						}
+					?>
 				</table>
 				
 				<div></div>

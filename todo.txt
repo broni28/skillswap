@@ -3,11 +3,6 @@ To do:
 YO YO YO YO YO, feel free to add stuff to the to do list as you think of things.
 
 Top Priorities
-	Student account page
-	Instructor account page
-	Chatroom button for mobile
-	Chatroom actual profile picture
-	Replace placeholder instructors with ones actually in the database
 
 Home Page
 	Replace placeholder instructors with ones actually in the database
@@ -25,6 +20,11 @@ Public Instructor Page: This will be the page a student will go to when clicking
 	
 Instructor Account Page (dashboard format)
 	Calendar interface to set their availability
+		Student chooses from a list of available times that week
+			1) Choose day
+			2) Choose available time that day
+		Instructor sets their availability for the week
+		Show instructor appointments that week
 	Uploaded profile image
 	Payout mechanism
 	Billing
@@ -50,4 +50,4 @@ Post booking process
 	1) If instructor misses, student gets a refund
 	2) If student misses, instructor gets their deposit back
 	3) Student gets an email requesting them to rate their instructor
-	4) Instructor gets paid sometime afterwards
+	4) Instructor gets paid sometime afterwards	
