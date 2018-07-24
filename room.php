@@ -9,7 +9,7 @@
 	$room = new Room;
 	$ids = $room->fetch_ids();
 	
-	$show_stuff = false;
+	$show_stuff = true;
 ?>
 <!DOCTYPE HTML?>
 <html>
