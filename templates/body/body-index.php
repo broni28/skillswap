@@ -118,11 +118,11 @@
 						<div style='font-size:22px;'>Guitar Lessons: Learn Basic Chords and Simple Melodies</div>
 						<div style='color:#777;'>Instructor: Brandon Lalonde</div>
 						<div style='margin:10px 0;'>
-							<i class='fa fa-star' style='color:#ff8300'></i>
-							<i class='fa fa-star' style='color:#ff8300'></i>
-							<i class='fa fa-star' style='color:#ff8300'></i>
-							<i class='fa fa-star' style='color:#ff8300'></i>
-							<i class='fa fa-star' style='color:#ddd'></i>
+							<i class='fa fa-star star' style='color:#ff8300'></i>
+							<i class='fa fa-star star' style='color:#ff8300'></i>
+							<i class='fa fa-star star' style='color:#ff8300'></i>
+							<i class='fa fa-star star' style='color:#ff8300'></i>
+							<i class='fa fa-star star' style='color:#ddd'></i>
 							4.0 (2,422 ratings)
 						</div>
 						<div style='text-align:center;background:rgba(0,255,31,0.16);color:#20b370;border-top:2px solid #9dbfb0;border-bottom:2px solid #9dbfb0;padding:5px 0;font-size:19px;margin:5px 0;'>$15 per hour</div>

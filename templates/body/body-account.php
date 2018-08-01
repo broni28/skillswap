@@ -1,5 +1,5 @@
 <?php if($_SERVER['PHP_SELF'] == '/' . $page['body'] . ".php" && $_SESSION['email']): ?>
-	<?php $user_info['role'] = 'instructor';if($user_info['role'] == 'instructor'): ?>
+	<?php if($user_info['role'] == 'instructor'): ?>
 		<div id='section6-wrap'>
 			<div class='center-40'>
 				<div class='text-center' style='padding:15px 0;margin:15px 0;background:#000;color:#fff;'>You have a meeting in 5 minutes <a href='room.php?id=1'>Join Room</a></div>
