@@ -295,7 +295,6 @@ textarea{
 }
 /*----SECTION 6----*/
 #section6-wrap{
-	font-family: 'Montserrat', sans-serif;
 	background:#e9f2f1;
 	padding:10px 0;
 	color:#444;
@@ -324,6 +323,11 @@ textarea{
 	padding:8px 15px;
 	font-size:12px;
 }
+#section6-wrap .small-font{
+	font-size:14px;
+	font-family: 'Anaheim', sans-serif;
+	color:#123456;
+}
 #section6-wrap .box{
 	background:#fff;
 	padding:25px;
@@ -343,6 +347,76 @@ textarea{
 }
 .section6-space{
 	padding:30px 0;
+}
+/*----SECTION 7----*/
+#section7-wrap{
+	font-family: 'Montserrat', sans-serif;
+	background:#e9f2f1;
+	padding:10px 0;
+	color:#444;
+}
+#section7-wrap h1{
+	margin-bottom:5px;
+	margin-top:30px;
+	padding:5px 0;
+}
+#section7-wrap h2{
+	color:#969696;
+	text-transform:uppercase;
+}
+#section7-wrap img{
+	width:100%;
+}
+#section7-wrap .button{
+	padding:8px 15px;
+	font-size:12px;
+}
+#section7-wrap .small-font{
+	font-size:14px;
+	color:#123456;
+}
+#section7-wrap .box{
+	background:#fff;
+	padding:25px;
+	margin:25px;
+	font-size:19px;
+	box-shadow:3px 3px 3px #cacaca;
+	box-shadow: 6px 6px 6px #cbdad8;
+}
+#section7-wrap .reviews{
+	font-size:16px;
+	font-family:'Anaheim', sans-serif;
+}
+#section7-wrap .border-top{
+	border-top:1px solid #eee;
+}
+#section7-wrap .border-bottom{
+	border-bottom:1px solid #eee;
+}
+#section7-wrap .review{
+	padding:10px;
+	border-bottom:2px solid #e2e2e2;
+}
+#section7-wrap table{
+	width:325px;
+	font-size:14px;
+	font-size:14px;
+}
+#section7-wrap th, #section7-wrap td{
+	padding:7px;
+	text-align:center;
+}
+#section7-wrap td{
+	background:#f5e9e5;
+	color:#903a1f;
+	cursor:pointer;
+}
+#section7-wrap th{
+	background:#903a1f;
+	color:#fff;
+}
+#section7-wrap .weekly-calendar{
+	width:100%;
 }
 /*----FOOTER----*/
 #footer1-wrap, #footer2-wrap{
@@ -519,25 +593,4 @@ textarea{
 }
 #chat-svg{
 	display:none;
-}
-/*----CALENDAR----*/
-table{
-	border-collapse:collapse;
-	background:#fff;
-}
-th, td{
-	padding:7px;
-	text-align:center;
-}
-tr:nth-child(1) td{
-	padding:15px 7px;
-}
-.weekly-calendar{
-	width:100%;
-}
-.weekly-calendar th, .weekly-calendar td{
-	border-right:3px solid #e9f2f1;
-	border-left:3px solid #e9f2f1;
-	border-top:1px solid #e9f2f1;
-	border-bottom:1px solid #e9f2f1;
 }
