@@ -345,7 +345,8 @@ textarea{
 /*----SECTION 7----*/
 #section7-wrap{
 	font-family: 'Montserrat', sans-serif;
-	background:#e9f2f1;
+	background:linear-gradient(to bottom right, rgba(186, 234, 239, 0.85), rgba(198, 223, 230, 0.85)), url(/images/section5-wrap.jpg) center center no-repeat;
+	background-size:cover;
 	padding:10px 0;
 	color:#444;
 }
@@ -373,8 +374,7 @@ textarea{
 	background:#fff;
 	padding:25px;
 	margin:25px;
-	box-shadow:3px 3px 3px #cacaca;
-	box-shadow: 6px 6px 6px #cbdad8;
+	box-shadow:8px 8px 8px #aec6cb;
 }
 #section7-wrap .reviews{
 	font-family:'Anaheim', sans-serif;
@@ -390,13 +390,12 @@ textarea{
 	border-bottom:2px solid #e2e2e2;
 }
 #section7-wrap table{
-	width:325px;
-	font-size:14px;
 	font-size:14px;
 }
 #section7-wrap th, #section7-wrap td{
 	padding:7px;
 	text-align:center;
+	width:42px;
 }
 #section7-wrap td{
 	background:#f5e9e5;

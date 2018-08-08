@@ -21,7 +21,7 @@
 				Certified Math Teacher, Prestigious Award 2013
 			</div>
 		</div>
-		<div class='box' style='width:calc(100% - 400px - 100px * 2 - 4px);'>
+		<div class='box' style='width:calc(100% - 400px - 100px * 2);'>
 			<h1 class='border-top'>About The Instructor</h1>
 			<p>Jeanne has been teaching math since 2004. With over 14 years of experience, she specializes in many different areas, including math and scienece, to health and exercise. Typically, I am available on weekdays but my availability might change from day to day. It will all depend on whether or not I choose to be available. Lessons range from $15 - $20 dollars per hour, but anyone can sign up at a given time. Thanks!</p>
 			<div class='reviews'>

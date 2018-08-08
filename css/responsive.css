@@ -51,6 +51,10 @@
 	#menu{
 		display:none;
 	}
+	.box{
+		width:calc(100% - 50px) !important;
+		margin:25px 0 !important;
+	}
 }
 @media only screen and (min-width: 1px) and (max-width: 800px){
 	/*CHATROOM MOBILE OPTIMIZATION*/
