@@ -20,6 +20,8 @@ a{
 }
 p{
 	line-height:25px;
+}
+.body-index p{
 	font-size:19px;
 }
 img{
@@ -328,14 +330,6 @@ textarea{
 	font-family: 'Anaheim', sans-serif;
 	color:#123456;
 }
-#section6-wrap .box{
-	background:#fff;
-	padding:25px;
-	margin:25px;
-	font-size:19px;
-	box-shadow:3px 3px 3px #cacaca;
-	box-shadow: 6px 6px 6px #cbdad8;
-}
 #section6-wrap .reviews{
 	font-size:16px;
 }
@@ -379,12 +373,10 @@ textarea{
 	background:#fff;
 	padding:25px;
 	margin:25px;
-	font-size:19px;
 	box-shadow:3px 3px 3px #cacaca;
 	box-shadow: 6px 6px 6px #cbdad8;
 }
 #section7-wrap .reviews{
-	font-size:16px;
 	font-family:'Anaheim', sans-serif;
 }
 #section7-wrap .border-top{
