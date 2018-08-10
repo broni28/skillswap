@@ -74,6 +74,9 @@ textarea{
 .overflow{
 	overflow:auto;
 }
+.float{
+	float:left;
+}
 .flex{
 	display:flex;
 	flex-wrap:wrap;
@@ -345,12 +348,12 @@ textarea{
 /*----SECTION 7----*/
 #section7-wrap{
 	font-family: 'Montserrat', sans-serif;
-	background:linear-gradient(to bottom right, rgba(186, 234, 239, 0.85), rgba(198, 223, 230, 0.85)), url(/images/section5-wrap.jpg) center center no-repeat;
+	background:linear-gradient(to bottom right, rgba(144, 58, 31, 0.2), rgba(144, 58, 31, 0.2)), url(/images/section5-wrap.jpg) center center no-repeat;
 	background-size:cover;
 	padding:10px 0;
 	color:#444;
 }
-#section7-wrap h1{
+#section7-wrap .margin-top{
 	margin-bottom:5px;
 	margin-top:30px;
 	padding:5px 0;
@@ -374,7 +377,6 @@ textarea{
 	background:#fff;
 	padding:25px;
 	margin:25px;
-	box-shadow:8px 8px 8px #aec6cb;
 }
 #section7-wrap .reviews{
 	font-family:'Anaheim', sans-serif;
